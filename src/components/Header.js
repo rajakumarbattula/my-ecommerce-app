@@ -1,6 +1,8 @@
 import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Header.css';
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase';
 //import React, { useContext } from 'react';
 //import { Link } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
@@ -21,9 +23,15 @@ const Header = () => {
     }
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     // Implement logout functionality if needed
     // navigate('/login'); // Navigate to login page after logout
+    try {
+      await signOut(auth);
+      navigate('/login'); // Redirect to login page after logout
+    } catch (error) {
+      console.error("Error logging out: ", error);
+    }
   };
 
   return (
