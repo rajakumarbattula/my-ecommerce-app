@@ -8,21 +8,29 @@ import Products from './pages/Products';
 import Cart from './pages/Cart';
 import About from './pages/About';
 import SearchResults from './pages/SearchResults';
+import Login from './components/Login';
+import Signup from './components/Signup';
+import { UserProvider } from './context/UserContext';
+
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/about" element={<About />} />
-	  <Route path="/search" element={<SearchResults />} />
-        </Routes>
-      </div>
-    </Router>
+   <UserProvider>
+     <Router>
+       <div className="App">
+         <Header />
+         <Routes>
+           <Route path="/" element={<Home />} />
+           <Route path="/products" element={<Products />} />
+           <Route path="/cart" element={<Cart />} />
+           <Route path="/about" element={<About />} />
+	   <Route path="/search" element={<SearchResults />} />
+	   <Route path="/login" element={<Login />} />
+           <Route path="/signup" element={<Signup />} />
+         </Routes>
+       </div>
+     </Router>
+   </UserProvider>
   );
 }
 
