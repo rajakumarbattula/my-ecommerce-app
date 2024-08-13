@@ -2,7 +2,7 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBRqsKz4Vez5us5csoCtM6ZGVHdCyALw5o",
+  apiKey: "<google-api-key>",
   authDomain: "my-ecommerce-app-d7a91.firebaseapp.com",
   projectId: "my-ecommerce-app-d7a91",
   storageBucket: "my-ecommerce-app-d7a91.appspot.com",
