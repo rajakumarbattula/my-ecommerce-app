@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
+import ForgotPassword from './components/ForgotPassword';
+import LoginWithOTP from './components/LoginWithOTP';
 
 // Import other components (Home, Products, Cart, etc.)
 import Home from './pages/Home';
@@ -24,9 +26,11 @@ function App() {
            <Route path="/products" element={<Products />} />
            <Route path="/cart" element={<Cart />} />
            <Route path="/about" element={<About />} />
-	   <Route path="/search" element={<SearchResults />} />
-	   <Route path="/login" element={<Login />} />
+	         <Route path="/search" element={<SearchResults />} />
+	         <Route path="/login" element={<Login />} />
            <Route path="/signup" element={<Signup />} />
+           <Route path="/forgot-password" element={<ForgotPassword />} /> 
+           <Route path="/login-with-otp" element={<LoginWithOTP />} /> {/* New Route */}
          </Routes>
        </div>
      </Router>

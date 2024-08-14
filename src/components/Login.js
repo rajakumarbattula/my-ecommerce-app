@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Auth.css';
 
 
@@ -22,25 +22,35 @@ const Login = () => {
   };
 
   return (
-    <div className="auth-form">
+    <div>
       <h2>Login</h2>
-      {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit}>
         <input
           type="email"
-          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
+          required
         />
         <input
           type="password"
-          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+          required
         />
+        {error && <p>{error}</p>}
         <button type="submit">Login</button>
       </form>
-      <p>Don't have an account? <a href="/signup">Sign up</a></p>
+      <div>
+        <Link to="/forgot-password">Forgot Password?</Link> {/* Add the link here */}
+      </div>
+      <div>
+        <Link to="/signup">Don't have an account? Sign Up</Link> {/* Example Sign Up link */}
+      </div>
+      <div>
+        <Link to="/login-with-otp">Login with OTP</Link>
+      </div>
     </div>
   );
 };
