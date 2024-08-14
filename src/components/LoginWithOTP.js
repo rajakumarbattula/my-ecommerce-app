@@ -9,14 +9,17 @@ const LoginWithOTP = () => {
   const [verificationId, setVerificationId] = useState(null);
 
   const setupRecaptcha = () => {
-    window.recaptchaVerifier = new RecaptchaVerifier(
-      'recaptcha-container',
-      {
-        size: 'invisible',
-        callback: (response) => {
-          // ReCAPTCHA solved, allow signInWithPhoneNumber.
-          console.log("Recaptcha resolved");
-        },
+    if (!window.recaptchaVerifier) {
+        window.recaptchaVerifier = new RecaptchaVerifier(
+          'recaptcha-container',
+          {
+            'size': 'invisible',
+            'callback': (response) => {
+              console.log('Recaptcha resolved', response);
+            },
+            'expired-callback': () => {
+              console.log('Recaptcha expired');
+            }
       },
       auth
     );
