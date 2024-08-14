@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { auth } from '../firebase';
-import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
+import { RecaptchaVerifier, signInWithPhoneNumber, PhoneAuthProvider } from 'firebase/auth';
 
 const LoginWithOTP = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -38,7 +38,7 @@ const LoginWithOTP = () => {
   const verifyOTP = async (e) => {
     e.preventDefault();
     try {
-      const credential = firebase.auth.PhoneAuthProvider.credential(verificationId, otp);
+      const credential = PhoneAuthProvider.credential(verificationId, otp);
       await auth.signInWithCredential(credential);
       setMessage('Successfully logged in!');
     } catch (error) {
