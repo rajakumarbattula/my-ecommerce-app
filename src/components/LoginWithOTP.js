@@ -1,3 +1,4 @@
+// Correctly placed imports at the top level
 import React, { useState } from 'react';
 import { auth } from '../firebase';
 import { RecaptchaVerifier, signInWithPhoneNumber, PhoneAuthProvider } from 'firebase/auth';
@@ -10,19 +11,20 @@ const LoginWithOTP = () => {
 
   const setupRecaptcha = () => {
     if (!window.recaptchaVerifier) {
-        window.recaptchaVerifier = new RecaptchaVerifier(
-          'recaptcha-container',
-          {
-            'size': 'invisible',
-            'callback': (response) => {
-              console.log('Recaptcha resolved', response);
-            },
-            'expired-callback': () => {
-              console.log('Recaptcha expired');
-            }
-      },
-      auth
-    );
+      window.recaptchaVerifier = new RecaptchaVerifier(
+        'recaptcha-container',
+        {
+          size: 'invisible',
+          callback: (response) => {
+            console.log('Recaptcha resolved', response);
+          },
+          'expired-callback': () => {
+            console.log('Recaptcha expired');
+          },
+        },
+        auth
+      );
+    }
   };
 
   const requestOTP = async (e) => {
@@ -78,4 +80,5 @@ const LoginWithOTP = () => {
   );
 };
 
+// Correctly placed export at the top level
 export default LoginWithOTP;
